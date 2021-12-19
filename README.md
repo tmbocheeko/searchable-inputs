@@ -11,7 +11,7 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/stles.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/styles.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
