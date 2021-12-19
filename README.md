@@ -24,10 +24,10 @@ JS: _(Put this in your `<body>`)_
 ## Javascript 
 
 `newSIInput(id, options, centered)`
-- **id****(String)*: The id for the input element and the `for-si-input` attribute on the `option-list` element.
-- **options****(String or Array)*: Either a single option (string) or list of options (array) to populate the input with.
-- **centered****(True/False, Optional)*: Makes the input element and option list centered within the parent element.
+- **id*** *(String)*: The id for the input element and the `for-si-input` attribute on the `option-list` element.
+- **options** *(String or Array)*: Either a single option (string) or list of options (array) to populate the input with.
+- **centered** *(True/False, Optional)*: Makes the input element and option list centered within the parent element.
 
 `newSIOption(id, options, centered)`
-- **id****(String)*: The id for the input element to add an option to.
-- **option****(String or Array)*: Either a single option (string) or list of options (array) to add to the input.
+- **id** *(String)*: The id for the input element to add an option to.
+- **option** *(String or Array)*: Either a single option (string) or list of options (array) to add to the input.
