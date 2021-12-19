@@ -7,22 +7,17 @@ var optionListsAr;
 var optionListsForAr;
 
 function loadSI() {
-	searchableInputs = document.querySelectorAll(".si-searchable-input");
+	searchableInputs = document.querySelectorAll(".si-input");
 	searchableInputsAr = [...searchableInputs];
 	searchableInputsIdAr = [];
 	for (i=0; i<searchableInputsAr.length; i++) {
 		var el = searchableInputsAr[i];
 		searchableInputsIdAr.push(el.id);
-		el.setAttribute("tabindex", "0");
 		if (el.getAttribute("si-listener") !== "true") {
 			el.setAttribute("si-listener", "true");
 			el.addEventListener("focusin", function() {
-				this.setAttribute("contenteditable", "true");
-				selectElementContents(this);
+				this.select();
 				unhide('.si-option');
-			});
-			el.addEventListener("focusout", function() {
-				this.setAttribute("contenteditable", "false");
 			});
 		}
 	}
@@ -42,7 +37,7 @@ function loadSI() {
 			tempOption.setAttribute("si-listener", "true");
 			tempOption.addEventListener("click", function() {
 				var tempinput = document.getElementById(this.parentElement.getAttribute("for-si-input"));
-				tempinput.innerHTML = this.innerHTML;
+				tempinput.value = this.innerHTML;
 				dispMod(undefined, true, tempinput);
 			});
 			tempOption.addEventListener("mouseover", function() {
@@ -73,7 +68,7 @@ function dispMod(el, unfocusTF, overrideEL) {
 	if (optionListNum > -1) {
 		var options = optionListsAr[optionListNum].querySelectorAll("*");
 		for (i=0; i<options.length; i++) {
-			if (options[i].innerHTML.toLowerCase().match(input.innerHTML.toLowerCase())) {
+			if (options[i].innerHTML.toLowerCase().match(input.value.toLowerCase())) {
 				options[i].classList.remove("si-hidden");
 			} else {
 				options[i].classList.add("si-hidden");
@@ -150,8 +145,8 @@ function selectNew(dir) {
 			available[hoverIndex].scrollIntoViewIfNeeded(true);
 		}
 		if (dir === "Enter") {
-			if (hovered) input.innerHTML = available[hoverIndex].innerHTML;
-			else input.innerHTML = available[0].innerHTML;
+			if (hovered) input.value = available[hoverIndex].innerHTML;
+			else input.value = available[0].innerHTML;
 			dispMod();
 			unfocus(".si-option");
 		}
@@ -171,8 +166,8 @@ function newSIInput(id, option, centered) {
 	var container =  document.createElement("div");
 	container.classList.add("si-container");
 	if (centered) container.classList.add("si-centered");
-	var newSI = document.createElement("div");
-	newSI.classList.add("si-searchable-input");
+	var newSI = document.createElement("input");
+	newSI.classList.add("si-input");
 	newSI.id = id;
 	container.appendChild(newSI);
 	var optionContainer = document.createElement("div");
