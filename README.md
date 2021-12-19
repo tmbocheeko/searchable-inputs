@@ -11,13 +11,13 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.1/styles.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.2/styles.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.1/script.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.2/script.js" crossorigin="anonymous" defer></script>
 ```
 ### Use it in your HTML
 
@@ -25,7 +25,7 @@ Example _(normally aligned)_:
 
 ```html
   <div class="si-container">
-    <div id="yourIDHere" class="si-searchable-input"></div>
+    <input id="yourIDHere" class="si-input">
     <div class="si-option-container">
       <div class="si-option-list" for-si-input="yourIDHere">
         <p class="si-option">Option Text</p>
@@ -38,7 +38,7 @@ Example _(centered)_:
 
 ```html
   <div class="si-container si-centered">
-    <div id="yourIDHere2" class="si-searchable-input"></div>
+    <input id="yourIDHere2" class="si-input">
     <div class="si-option-container">
       <div class="si-option-list" for-si-input="yourIDHere2">
         <p class="si-option">Option Text</p>
@@ -49,7 +49,7 @@ Example _(centered)_:
 
 ## Additional Classes
 
-`white-arrow`: White dropdown arrow for the input box. Added to the input (div with the class `si-searchable-input`.)
+`white-arrow`: White dropdown arrow for the input box. Added to the input.
 
 `si-centered`: Centers the input element and option list within the parent element.
 
