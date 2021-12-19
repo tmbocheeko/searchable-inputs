@@ -158,15 +158,19 @@ function selectNew(dir) {
 	}
 }
 
-function newSearchableInput(id, optionsAr, centeredTF) {
+function newSIInput(id, option, centered) {
 	if (typeof(id) !== "string") throw new Error("Parameter 1 (id) must be of type String");
-	if (!Array.isArray(optionsAr)) throw new Error("Parameter 2 (optionsAr) must be of type Array");
-	for (i=0; i<optionsAr.length; i++) if (typeof(optionsAr[i]) !== "string") throw new Error("Parameter 2 (optionsAr) must be of type Array containing only Strings");
-	if (typeof(centeredTF) !== "undefined" && typeof(centeredTF) !== "boolean") throw new Error("Parameter 3 (centeredTF) must be of type Boolean or be Undefined");
+	var optionType = typeof(option);
+	if (optionType !== "string" && !Array.isArray(option)) throw new Error("Parameter 2 (option) must be of type String or type Array");
+	var options = [];
+	if (optionType === "string") options.push(option);
+	else options = option;
+	for (i=0; i<options.length; i++) if (typeof(options[i]) !== "string") throw new Error("Parameter 2 (option) must be of type Array containing only Strings");
+	if (typeof(centered) !== "undefined" && typeof(centered) !== "boolean") throw new Error("Parameter 3 (centered) must be of type Boolean or be Undefined");
 	var id = id.toLowerCase().replace(/(\s|_)/g, "-").replace(/([^a-z0-9\-]|(?<=-)-*)+/g, "");
 	var container =  document.createElement("div");
 	container.classList.add("si-container");
-	if (centeredTF) container.classList.add("si-centered");
+	if (centered) container.classList.add("si-centered");
 	var newSI = document.createElement("div");
 	newSI.classList.add("si-searchable-input");
 	newSI.id = id;
@@ -177,10 +181,10 @@ function newSearchableInput(id, optionsAr, centeredTF) {
 	var optionList = document.createElement("div");
 	optionList.classList.add("si-option-list");
 	optionList.setAttribute("for-si-input", id);
-	for (i=0; i<optionsAr.length; i++) {
+	for (i=0; i<options.length; i++) {
 		var tempOp = document.createElement("p");
 		tempOp.classList.add("si-option");
-		tempOp.innerHTML = optionsAr[i];
+		tempOp.innerHTML = options[i];
 		optionList.appendChild(tempOp);
 	}
 	optionContainer.appendChild(optionList);
