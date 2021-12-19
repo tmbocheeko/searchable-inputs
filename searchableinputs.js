@@ -68,7 +68,7 @@ function dispMod(el, unfocusTF, overrideEL) {
 	if (optionListNum > -1) {
 		var options = optionListsAr[optionListNum].querySelectorAll("*");
 		for (i=0; i<options.length; i++) {
-			if (options[i].innerHTML.toLowerCase().match(input.value.toLowerCase())) {
+			if (options[i].innerHTML.toLowerCase().replace(/([^a-z0-9])+/g).match(input.value.toLowerCase().replace(/([^a-z0-9])+/g))) {
 				options[i].classList.remove("si-hidden");
 			} else {
 				options[i].classList.add("si-hidden");
