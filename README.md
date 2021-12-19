@@ -21,7 +21,7 @@ JS: _(Put this in your `<body>`)_
 `white-arrow`: White dropdown arrow for the input box. Added to the input (div with the class `si-searchable-input`.)
 `si-centered`: Centers the input element and option list within the parent element.
 
-## Javascript 
+## Javascript Functions
 
 `newSIInput(id, options, centered)`
 - **id** *(String)*: The id for the input element and the `for-si-input` attribute on the `option-list` element.
