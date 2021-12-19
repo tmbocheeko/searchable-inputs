@@ -1,5 +1,5 @@
 # searchable-inputs
-Searchable Inputs for HTML by [tmbocheeko]()
+Searchable Inputs for HTML by [tmbocheeko](https://www.twitter.com/tmbocheeko_).
 
 ## Import into your project
 Use jsDelivr to import this into your project!
