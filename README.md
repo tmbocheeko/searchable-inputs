@@ -64,4 +64,4 @@ Example _(centered)_:
 - **id** _(String)_: The id for the input element to add an option to.
 - **option** _(String or Array)_: Either a single option (string) or list of options (array) to add to the input.
 
-`loadSI()`: Reloads all the options and inputs. Make sure to use this after using any of the other functions.
+`loadSI()`: Reloads all the options and inputs. **Make sure to use this after using any of the other functions.**
