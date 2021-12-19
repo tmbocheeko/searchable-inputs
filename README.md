@@ -1,7 +1,11 @@
 # searchable-inputs
 Searchable Inputs for HTML by [tmbocheeko](https://www.twitter.com/tmbocheeko_).
 
-## Import into your project
+See it in action [here](https://jsfiddle.net/tmbocheeko/j5crh3od/latest).
+
+## Using this in your project
+
+### Import searchable-inputs
 Use jsDelivr to import this into your project!
 
 CSS _(Put this in your `<head>`)_
@@ -14,6 +18,33 @@ Javascript _(Put this in your `<body>`)_:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/script.js" crossorigin="anonymous" defer></script>
+```
+### Use it in your HTML
+
+Example _(normally aligned)_:
+
+```html
+  <div class="si-container">
+    <div id="yourIDHere" class="si-searchable-input"></div>
+    <div class="si-option-container">
+      <div class="si-option-list" for-si-input="yourIDHere">
+        <p class="si-option">Option Text</p>
+      </div>
+    </div>
+  </div>
+```
+
+Example _(centered)_:
+
+```html
+  <div class="si-container si-centered">
+    <div id="yourIDHere2" class="si-searchable-input"></div>
+    <div class="si-option-container">
+      <div class="si-option-list" for-si-input="yourIDHere2">
+        <p class="si-option">Option Text</p>
+      </div>
+    </div>
+  </div>
 ```
 
 ## Additional Classes
