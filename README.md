@@ -4,13 +4,13 @@ Searchable Inputs for HTML by [tmbocheeko](https://www.twitter.com/tmbocheeko_).
 ## Import into your project
 Use jsDelivr to import this into your project!
 
-CSS: _(Put this in your `<head>`)_
+CSS _(Put this in your `<head>`)_
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/stles.css" rel="stylesheet" type="text/css" />
 ```
 
-Javascript: _(Put this in your `<body>`)_
+Javascript _(Put this in your `<body>`)_:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/script.js" crossorigin="anonymous" defer></script>
@@ -25,10 +25,10 @@ Javascript: _(Put this in your `<body>`)_
 ## Javascript Functions
 
 `newSIInput(id, options, centered)` —
-- **id** *(String)*: The id for the input element and the `for-si-input` attribute on the `option-list` element.
-- **options** *(String or Array)*: Either a single option (string) or list of options (array) to populate the input with.
-- **centered** *(True/False, Optional)*: Makes the input element and option list centered within the parent element.
+- **id** _(String)_: The id for the input element and the `for-si-input` attribute on the `option-list` element.
+- **options** _(String or Array)_: Either a single option (string) or list of options (array) to populate the input with.
+- **centered** _(True/False, Optional)_: Makes the input element and option list centered within the parent element.
 
 `newSIOption(id, options, centered)` —
-- **id** *(String)*: The id for the input element to add an option to.
-- **option** *(String or Array)*: Either a single option (string) or list of options (array) to add to the input.
+- **id** _(String)_: The id for the input element to add an option to.
+- **option** _(String or Array)_: Either a single option (string) or list of options (array) to add to the input.
