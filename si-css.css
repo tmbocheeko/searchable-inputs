@@ -1,0 +1,120 @@
+:root {
+	--si-width: 300px;
+	--si-height: 30px;
+	--si-top-correction: 4px;
+	--si-border-width: 1px;
+	--si-padding-width: 4px;
+	--si-arrow-padding: calc(var(--si-height) - calc(var(--si-padding-width) + var(--si-border-width)));
+	--si-input-padding: var(--si-padding-width) var(--si-arrow-padding) var(--si-padding-width) var(--si-padding-width);
+	--si-option-padding: var(--si-padding-width) var(--si-padding-width) var(--si-padding-width) var(--si-padding-width);
+	--si-margin-width: 4px;
+	--si-input-margin: var(--si-margin-width) var(--si-margin-width) var(--si-margin-width) var(--si-margin-width);
+	--si-option-margin: var(--si-margin-width) var(--si-margin-width) var(--si-margin-width) var(--si-margin-width);
+	--si-option-bg: rgb(117, 117, 117);
+	--si-option-bg-alt: rgb(133, 133, 133);
+	--si-input-bg: white;
+	--si-input-border: var(--si-border-width) black inset;
+	--si-input-font: 15px Helvetica, sans-serif;
+	--si-option-font: 15px Helvetica, sans-serif;
+	--si-option-max-height: 300px;
+}
+
+.si-container.si-centered {
+	display: flex;
+  justify-content: center;
+}
+
+.si-input {
+	font: var(--si-input-font);
+	color: black;
+	width: var(--si-width);
+	height: var(--si-height);
+	padding: var(--si-input-padding);
+	margin: var(--si-input-margin);
+  border: var(--si-input-border);
+	box-sizing: border-box;
+	resize: none;
+  overflow: auto;
+  outline: none;
+  border-radius: 0px;
+	cursor: default;
+	background-color: var(--si-input-bg);
+	background-image: url("https://i.imgur.com/r5scGNc.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment: scroll;
+	background-size: contain;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.si-input.si-white-arrow  {
+	background-image: url("https://i.imgur.com/eMCAvh6.png");
+}
+
+.si-input:focus, .si-input:active {
+	cursor: auto;
+}
+
+.si-option-container {
+	position: relative;
+}
+
+
+.si-option-list, .si-option-list:active {
+	font: var(--si-option-font);
+	opacity: 0;
+	position: absolute;
+	top: calc(-1 * var(--si-top-correction));
+	visibility: hidden;
+	display: none;
+	height: 0px;
+	width: 0px;
+	z-index: 5;
+}
+
+.si-centered .si-option-list {
+	top: calc(var(--si-height) + var(--si-top-correction));
+	right: 0px;
+}
+
+.si-option-list:hover, .si-input:focus ~ .si-option-container > .si-option-list {
+	opacity: inherit;
+	visibility: visible;
+	display: block;
+	background-color: var(--si-option-bg);
+	margin: 0px var(--si-margin-width);
+	width: var(--si-width);
+	height: auto;
+	max-height: var(--si-option-max-height);
+	overflow: auto;
+	z-index: 5;
+}
+
+.si-option {
+	color: white;
+	background-color: var(--si-option-bg-alt);
+	padding: var(--si-option-padding);
+	margin: 0px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	z-index: 5;
+}
+
+.si-option:nth-child(odd) {
+	background-color: var(--si-option-bg);
+}
+
+.si-option.si-hovered {
+	background-color: blue;
+}
+
+.si-hidden.si-option {
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
