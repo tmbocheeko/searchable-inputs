@@ -11,13 +11,13 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/styles.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.1/styles.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/script.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.1/script.js" crossorigin="anonymous" defer></script>
 ```
 ### Use it in your HTML
 
