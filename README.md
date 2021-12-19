@@ -10,7 +10,7 @@ CSS: _(Put this in your `<head>`)_
 <link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/stles.css" rel="stylesheet" type="text/css" />
 ```
 
-JS: _(Put this in your `<body>`)_
+Javascript: _(Put this in your `<body>`)_
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.0/script.js" crossorigin="anonymous" defer></script>
