@@ -55,11 +55,13 @@ Example _(centered)_:
 
 ## Javascript Functions
 
-`newSIInput(id, options, centered)` —
+`newSIInput(id, options, centered)`: Returns an element containing a new input with the given id and option list.
 - **id** _(String)_: The id for the input element and the `for-si-input` attribute on the `option-list` element.
 - **options** _(String or Array)_: Either a single option (string) or list of options (array) to populate the input with.
 - **centered** _(True/False, Optional)_: Makes the input element and option list centered within the parent element.
 
-`newSIOption(id, options, centered)` —
+`newSIOption(id, options, centered)`: Appends a new option to an existing input.
 - **id** _(String)_: The id for the input element to add an option to.
 - **option** _(String or Array)_: Either a single option (string) or list of options (array) to add to the input.
+
+`loadSI()`: Reloads all the options and inputs. Make sure to use this after using any of the other functions.
