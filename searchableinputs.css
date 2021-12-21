@@ -9,7 +9,7 @@
 	--si-option-padding: var(--si-padding-width) var(--si-padding-width) var(--si-padding-width) var(--si-padding-width);
 	--si-margin-width: 4px;
 	--si-input-margin: var(--si-margin-width) var(--si-margin-width) var(--si-margin-width) var(--si-margin-width);
-	--si-option-margin: var(--si-margin-width) var(--si-margin-width) var(--si-margin-width) var(--si-margin-width);
+	--si-option-margin: 0px var(--si-margin-width);
 	--si-option-bg: rgb(117, 117, 117);
 	--si-option-bg-alt: rgb(133, 133, 133);
 	--si-input-bg: white;
@@ -31,12 +31,12 @@
 	height: var(--si-height);
 	padding: var(--si-input-padding);
 	margin: var(--si-input-margin);
-  border: var(--si-input-border);
+  	border: var(--si-input-border);
 	box-sizing: border-box;
 	resize: none;
-  overflow: auto;
-  outline: none;
-  border-radius: 0px;
+  	overflow: auto;
+  	outline: none;
+  	border-radius: 0px;
 	cursor: default;
 	background-color: var(--si-input-bg);
 	background-image: url("https://i.imgur.com/r5scGNc.png");
@@ -44,9 +44,9 @@
 	background-position: right top;
 	background-attachment: scroll;
 	background-size: contain;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  	display: flex;
+  	flex-wrap: wrap;
+  	align-content: center;
 }
 
 .si-input.si-white-arrow  {
