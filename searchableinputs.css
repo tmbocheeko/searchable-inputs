@@ -84,7 +84,7 @@
 	visibility: visible;
 	display: block;
 	background-color: var(--si-option-bg);
-	margin: 0px var(--si-margin-width);
+	margin: var(--si-option-margin);
 	width: var(--si-width);
 	height: auto;
 	max-height: var(--si-option-max-height);
