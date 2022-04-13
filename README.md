@@ -1,7 +1,7 @@
 # searchable-inputs
 Searchable Inputs for HTML by [tmbocheeko](https://www.twitter.com/tmbocheeko_).
 
-See it in action [here](https://jsfiddle.net/tmbocheeko/j5crh3od/latest).
+See it in action [here](https://codepen.io/tmbocheeko/pen/OJzwqXJ).
 
 ## Using this in your project
 
@@ -11,13 +11,13 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.2/searchableinputs.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.3/searchableinputs.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.2/searchableinputs.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.3/searchableinputs.js" crossorigin="anonymous" defer></script>
 ```
 ### Use it in your HTML
 
@@ -25,9 +25,9 @@ Example _(normally aligned)_:
 
 ```html
   <div class="si-container">
-    <input id="yourIDHere" class="si-input">
+    <input id="yourIDHere" class="si-input" autocomplete="off">          // Make sure to replace yourIDHere
     <div class="si-option-container">
-      <div class="si-option-list" for-si-input="yourIDHere">
+      <div class="si-option-list" for-si-input="yourIDHere">             // on both of these lines!
         <p class="si-option">Option Text</p>
       </div>
     </div>
@@ -38,9 +38,9 @@ Example _(centered)_:
 
 ```html
   <div class="si-container si-centered">
-    <input id="yourIDHere2" class="si-input">
+    <input id="yourIDHere" class="si-input" autocomplete="off">          // Make sure to replace yourIDHere
     <div class="si-option-container">
-      <div class="si-option-list" for-si-input="yourIDHere2">
+      <div class="si-option-list" for-si-input="yourIDHere">             // on both of these lines!
         <p class="si-option">Option Text</p>
       </div>
     </div>
@@ -49,7 +49,7 @@ Example _(centered)_:
 
 ## Additional Classes
 
-`white-arrow`: White dropdown arrow for the input box. Added to the input.
+`white-arrow`: White dropdown arrow for the input box, useful for darker input backgrounds. Added to the input.
 
 `si-centered`: Centers the input element and option list within the parent element.
 
@@ -64,4 +64,4 @@ Example _(centered)_:
 - **id** _(String)_: The id for the input element to add an option to.
 - **option** _(String or Array)_: Either a single option (string) or list of options (array) to add to the input.
 
-`loadSI()`: Reloads all the options and inputs. **Make sure to use this after using any of the other functions.**
+`loadSI()`: Reloads all the options and inputs. Previously required to be used after running any other function, is now built in to them instead. Remains in for legacy support.
