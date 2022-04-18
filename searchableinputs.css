@@ -19,6 +19,7 @@
   --si-option-bg: rgb(117, 117, 117);
   --si-option-bg-alt: rgb(133, 133, 133);
   --si-input-bg: white;
+  --si-input-bg-dark: #1d1f20;
   --si-input-border: var(--si-border-width) black inset;
   --si-input-font: 15px Helvetica, sans-serif;
   --si-option-font: 15px Helvetica, sans-serif;
@@ -53,6 +54,12 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.si-input.si-input-dark {
+  color: white;
+  background-color: var(--si-input-bg-dark);
+  background-image: url("https://i.imgur.com/eMCAvh6.png");
 }
 
 .si-input.si-white-arrow {
