@@ -59,6 +59,10 @@
   background-image: url("https://i.imgur.com/eMCAvh6.png");
 }
 
+.si-input.si-no-arrow {
+  background-image: none;
+}
+
 .si-input:focus,
 .si-input:active {
   cursor: auto;
