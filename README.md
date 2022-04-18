@@ -49,7 +49,9 @@ Example _(centered)_:
 
 ## Additional Classes
 
-`white-arrow`: White dropdown arrow for the input box, useful for darker input backgrounds. Added to the input.
+`si-white-arrow`: White dropdown arrow for the input box, useful for darker input backgrounds. Added to the input.
+
+`si-no-arrow`: Removes the arrow from the input box. Added to the input.
 
 `si-centered`: Centers the input element and option list within the parent element.
 
