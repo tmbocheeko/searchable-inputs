@@ -53,7 +53,9 @@ Example _(centered)_:
 
 `si-no-arrow`: Removes the arrow from the input box. Added to the input.
 
-`si-centered`: Centers the input element and option list within the parent element.
+`si-input-dark`: Changes the input's background to dark and automatically uses the white arrow. Added to the input.
+
+`si-centered`: Centers the input element and option list within the parent element. Added to the parent div of the input.
 
 ## Javascript Functions
 
