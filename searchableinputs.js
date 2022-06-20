@@ -72,6 +72,7 @@ function siDispMod(el, unfocusTF, overrideEL) {
   else var input = document.activeElement;
   if (searchableInputsIdAr.indexOf(input.id) === -1) return false;
   var optionListNum = siOptionListsForAr.indexOf(input.id);
+  siOptionListsAr[optionListNum].classList.add("si-modified");
   if (optionListNum > -1) {
     var siOptions = siOptionListsAr[optionListNum].querySelectorAll("*");
     for (i = 0; i < siOptions.length; i++) {
@@ -81,9 +82,24 @@ function siDispMod(el, unfocusTF, overrideEL) {
           .replace(/([^a-z0-9])+/g)
           .match(input.value.toLowerCase().replace(/([^a-z0-9])+/g))
       ) {
-        siOptions[i].classList.remove("si-hidden");
+        siOptions[i].classList.add("si-visible");
+        siOptions[i].classList.remove("si-hidden", "si-even", "si-odd");
       } else {
         siOptions[i].classList.add("si-hidden");
+        siOptions[i].classList.remove("si-visible", "si-even", "si-odd");
+      }
+    }
+    var siOptionsVisible = siOptionListsAr[optionListNum].querySelectorAll(
+      ".si-visible"
+    );
+    var isEven = true;
+    for (i = 0; i < siOptionsVisible.length; i++) {
+      if (isEven) {
+        siOptionsVisible[i].classList.add("si-even");
+        var isEven = false;
+      } else {
+        siOptionsVisible[i].classList.add("si-odd");
+        var isEven = true;
       }
     }
   }
@@ -243,3 +259,4 @@ function newSIOption(forId, option) {
   loadSI();
   return tmp;
 }
+
