@@ -23,6 +23,7 @@
   --si-input-font: 15px Helvetica, sans-serif;
   --si-option-font: 15px Helvetica, sans-serif;
   --si-option-max-height: 300px;
+  --si-hover-color: blue;
 }
 
 .si-container.si-centered {
@@ -123,12 +124,13 @@
   z-index: 5;
 }
 
-.si-option:nth-child(odd) {
+.si-option-list:not(.si-modified) .si-option:nth-child(odd),
+.si-odd {
   background-color: var(--si-option-bg);
 }
 
 .si-option.si-hovered {
-  background-color: blue;
+  background-color: var(--si-hover-color) !important;
 }
 
 .si-hidden.si-option {
