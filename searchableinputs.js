@@ -17,6 +17,7 @@ function loadSI() {
       el.setAttribute("si-listener", "true");
       el.addEventListener("focusin", function () {
         this.select();
+        this.nextElementSibling.children[0].classList.remove("si-modified");
         siUnhide(".si-option");
       });
     }
