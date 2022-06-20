@@ -5,6 +5,9 @@ var siOptionsAll;
 var siOptionLists;
 var siOptionListsAr;
 var siOptionListsForAr;
+var sivalueconfirmed = new Event("sivalueconfirmed");
+var sivalueenterkey = new Event("sivalueenterkey");
+var sivalueclicked = new Event("sivalueclicked");
 
 function loadSI() {
   searchableInputs = document.querySelectorAll(".si-input");
@@ -41,6 +44,8 @@ function loadSI() {
           this.parentElement.getAttribute("for-si-input")
         );
         siTempInput.value = this.innerHTML;
+        siTempInput.dispatchEvent(sivalueconfirmed);
+        siTempInput.dispatchEvent(sivalueclicked);
         siDispMod(undefined, true, siTempInput);
       });
       siTempOption.addEventListener("mouseover", function () {
@@ -179,6 +184,8 @@ function siSelectNew(dir) {
       // Enter
       if (hovered) input.value = available[hoverIndex].innerHTML;
       else input.value = available[0].innerHTML;
+      input.dispatchEvent(sivalueconfirmed);
+      input.dispatchEvent(sivalueenterkey);
       siDispMod();
       siUnfocus(".si-option");
     }
@@ -260,4 +267,3 @@ function newSIOption(forId, option) {
   loadSI();
   return tmp;
 }
-
