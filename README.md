@@ -11,13 +11,13 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.4/searchableinputs.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.5/searchableinputs.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.4/searchableinputs.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.5/searchableinputs.js" crossorigin="anonymous" defer></script>
 ```
 ### Use it in your HTML
 
@@ -56,6 +56,16 @@ Example _(centered)_:
 `si-input-dark`: Changes the input's background to dark and automatically uses the white arrow. Added to the input.
 
 `si-centered`: Centers the input element and option list within the parent element. Added to the parent div of the input.
+
+## Event Listeners
+
+All event listeners are applied to the input (`.si-input`) element.
+
+`sivalueconfirmed`: Triggers event when the value is confirmed by any means.
+
+`sivalueenterkey`: Triggers event when the value is confirmed by the enter key.
+
+`sivalueclicked`: Triggers event when the value is confirmed by clicking.
 
 ## Javascript Functions
 
