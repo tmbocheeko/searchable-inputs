@@ -78,6 +78,8 @@
 
 .si-option-container {
   position: relative;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
 }
 
 .si-option-list,
