@@ -132,7 +132,7 @@ function siUnfocus(className, returnEl) {
   for (i = 0; i < classList.length; i++) {
     classList[i].classList.add("si-hidden");
   }
-  returnEl.scrollIntoViewIfNeeded(true);
+  returnEl.scrollIntoView(true);
 }
 
 function siUnhide(className) {
@@ -169,7 +169,10 @@ function siSelectNew(dir) {
       var hoverIndex = hoverIndex - 1;
       siUnhover();
       available[hoverIndex].classList.add("si-hovered");
-      available[hoverIndex].scrollIntoViewIfNeeded(true);
+      available[hoverIndex].scrollIntoView({
+        block: "nearest",
+        inline: "nearest"
+      });
     }
     if (dir === 40) {
       // ArrowDown
@@ -178,7 +181,10 @@ function siSelectNew(dir) {
       var hoverIndex = hoverIndex + 1;
       siUnhover();
       available[hoverIndex].classList.add("si-hovered");
-      available[hoverIndex].scrollIntoViewIfNeeded(true);
+      available[hoverIndex].scrollIntoView({
+        block: "nearest",
+        inline: "nearest"
+      });
     }
     if (dir === 13) {
       // Enter
