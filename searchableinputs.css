@@ -127,7 +127,7 @@
 }
 
 .si-option-list:not(.si-modified) .si-option:nth-child(odd),
-.si-odd {
+.si-even {
   background-color: var(--si-option-bg);
 }
 
