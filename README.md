@@ -11,13 +11,13 @@ Use jsDelivr to import this into your project!
 CSS _(Put this in your `<head>`)_
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.5/searchableinputs.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.6/searchableinputs.css" rel="stylesheet" type="text/css" />
 ```
 
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.5/searchableinputs.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.6/searchableinputs.js" crossorigin="anonymous" defer></script>
 ```
 ### Use it in your HTML
 
@@ -57,15 +57,14 @@ Example _(centered)_:
 
 `si-centered`: Centers the input element and option list within the parent element. Added to the parent div of the input.
 
-## Event Listeners
+## Event Listener
 
-All event listeners are applied to the input (`.si-input`) element.
+The event listener is applied to the input (`.si-input`) element.
 
-`sivalueconfirmed`: Triggers event when the value is confirmed by any means.
+`sivalueconfirmed`: Triggers event when the value is confirmed.
+- **event.detail.value** _(String)_: The confirmed value, respecting all innerHTML of that option.
+- **event.detail.method** _(String)_: The method of confirming. Returns either `click` or `enter`.
 
-`sivalueenterkey`: Triggers event when the value is confirmed by the enter key.
-
-`sivalueclicked`: Triggers event when the value is confirmed by clicking.
 
 ## Javascript Functions
 
@@ -78,4 +77,4 @@ All event listeners are applied to the input (`.si-input`) element.
 - **id** _(String)_: The id for the input element to add an option to.
 - **option** _(String or Array)_: Either a single option (string) or list of options (array) to add to the input.
 
-`loadSI()`: Reloads all the options and inputs. Previously required to be used after running any other function, is now built in to them instead. Remains in for legacy support.
+`loadSI()`: Reloads all the options and inputs. Previously required to be used after running any other function; is now built in to them instead. Remains in for legacy support.
