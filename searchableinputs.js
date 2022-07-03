@@ -136,6 +136,9 @@ function siUnfocus(className, returnEl) {
     classList[i].classList.add("si-hidden");
   }
   returnEl.scrollIntoView({ block: "nearest", inline: "nearest" });
+  [...document.querySelectorAll(".si-even, .si-odd")].forEach(function (currentValue) {
+    currentValue.classList.remove("si-even", "si-odd");
+  });
 }
 
 function siUnhide(className) {
