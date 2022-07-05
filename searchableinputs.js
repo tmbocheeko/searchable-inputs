@@ -18,6 +18,9 @@ function loadSI() {
       el.addEventListener("focusin", function () {
         this.select();
         this.nextElementSibling.children[0].classList.remove("si-modified");
+        [...document.querySelectorAll(".si-even, .si-odd")].forEach(function (currentValue) {
+          currentValue.classList.remove("si-even", "si-odd");
+        });
         siUnhide(".si-option");
       });
     }
