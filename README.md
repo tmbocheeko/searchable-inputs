@@ -17,7 +17,7 @@ CSS _(Put this in your `<head>`)_
 Javascript _(Put this in your `<body>`)_:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.6/searchableinputs.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/tmbocheeko/searchable-inputs@v1.6/searchableinputs.js" crossorigin="anonymous"></script>
 ```
 ### Use it in your HTML
 
