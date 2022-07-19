@@ -43,7 +43,7 @@ function loadSI() {
         var siTempInput = document.getElementById(
           this.parentElement.getAttribute("for-si-input")
         );
-        siTempInput.value = this.innerHTML;
+        siTempInput.value = this.innerText;
         siTempInput.dispatchEvent(
           new CustomEvent("sivalueconfirmed", {
             detail: {
@@ -89,7 +89,7 @@ function siDispMod(el, unfocusTF, overrideEL) {
     var siOptions = siOptionListsAr[optionListNum].querySelectorAll("*");
     for (i = 0; i < siOptions.length; i++) {
       if (
-        siOptions[i].innerHTML
+        siOptions[i].innerText
           .toLowerCase()
           .replace(/([^a-z0-9])+/g)
           .match(input.value.toLowerCase().replace(/([^a-z0-9])+/g))
@@ -197,8 +197,8 @@ function siSelectNew(dir) {
     }
     if (dir === 13) {
       // Enter
-      if (hovered) input.value = available[hoverIndex].innerHTML;
-      else input.value = available[0].innerHTML;
+      if (hovered) input.value = available[hoverIndex].innerText;
+      else input.value = available[0].innerText;
       input.dispatchEvent(
         new CustomEvent("sivalueconfirmed", {
           detail: {
