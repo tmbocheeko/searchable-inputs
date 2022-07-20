@@ -1,3 +1,28 @@
+body {
+  overscroll-behavior: contain;
+  overflow-y: scroll;
+}
+
+.center-x {
+  display: flex;
+  justify-content: center;
+}
+
+.center-y {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.box {
+  border: 1px black inset;
+  width: 400px;
+  height: fit-content;
+  background-color: white;
+}
+
+/* Copy From Here Down */
+
 :root {
   --si-width: 300px;
   --si-height: 30px;
@@ -140,4 +165,20 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.si-option .si-option-hidden,
+.si-inner-temp {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+	user-drag: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
