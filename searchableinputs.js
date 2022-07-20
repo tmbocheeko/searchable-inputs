@@ -1,23 +1,12 @@
-var searchableInputs;
-var searchableInputsAr;
-var searchableInputsIdAr;
-var siOptionsAll;
-var siOptionLists;
-var siOptionListsAr;
-var siOptionListsForAr;
-
 function loadSI() {
-  searchableInputs = document.querySelectorAll(".si-input");
-  searchableInputsAr = [...searchableInputs];
-  searchableInputsIdAr = [];
-  for (var i = 0; i < searchableInputsAr.length; i++) {
-    var el = searchableInputsAr[i];
-    searchableInputsIdAr.push(el.id);
+  var searchableInputs = document.querySelectorAll(".si-input");
+  for (var i = 0; i < searchableInputs.length; i++) {
+    var el = searchableInputs[i];
     if (el.getAttribute("si-listener") !== "true") {
       el.setAttribute("si-listener", "true");
       el.addEventListener("focusin", function () {
         this.select();
-        this.nextElementSibling.children[0].classList.remove("si-modified");
+        this.parentElement.querySelector(".si-option-list").classList.remove("si-modified");
         [...document.querySelectorAll(".si-even, .si-odd")].forEach(function (currentValue) {
           currentValue.classList.remove("si-even", "si-odd");
         });
@@ -25,36 +14,27 @@ function loadSI() {
       });
     }
   }
-
-  siOptionsAll = document.querySelectorAll(".si-option");
-  siOptionLists = document.querySelectorAll(".si-option-list");
-  siOptionListsAr = [...siOptionLists];
-  siOptionListsForAr = [];
-  for (var i = 0; i < siOptionListsAr.length; i++) {
-    var tempfor = siOptionListsAr[i].getAttribute("for-si-input");
-    if (tempfor) siOptionListsForAr.push(tempfor);
-    else siOptionListsForAr.push("undefined");
-  }
-  for (var i = 0; i < siOptionsAll.length; i++) {
-    var siTempOption = siOptionsAll[i];
-    if (siTempOption.getAttribute("si-listener") !== "true") {
-      siTempOption.setAttribute("si-listener", "true");
-      siTempOption.addEventListener("click", function () {
-        var siTempInput = document.getElementById(
+  siOptions = document.querySelectorAll(".si-option");
+  for (var i = 0; i < siOptions.length; i++) {
+    if (siOptions[i].getAttribute("si-listener") !== "true") {
+      siOptions[i].setAttribute("si-listener", "true");
+      siOptions[i].addEventListener("click", function () {
+        var siInput = document.getElementById(
           this.parentElement.getAttribute("for-si-input")
         );
-        siTempInput.value = this.innerText;
-        siTempInput.dispatchEvent(
+        var visText = siGetVisibleText(this);
+        siInput.value = visText;
+        siInput.dispatchEvent(
           new CustomEvent("sivalueconfirmed", {
             detail: {
-              value: siTempInput.value,
+              value: visText,
               method: "click"
             }
           })
         );
-        siDispMod(undefined, true, siTempInput);
+        siDispMod(undefined, true, siInput);
       });
-      siTempOption.addEventListener("mouseover", function () {
+      siOptions[i].addEventListener("mouseover", function () {
         siUnhover();
         this.classList.add("si-hovered");
       });
@@ -63,6 +43,19 @@ function loadSI() {
 }
 
 loadSI();
+
+function siGetVisibleText(el) {
+  var temp = document.createElement("span");
+  temp.appendChild(el.cloneNode(true));
+  temp.querySelectorAll(".si-option-hidden").forEach(function(current) {
+    current.style.display = "none";
+  });
+  temp.classList.add(".si-inner-temp");
+  document.body.appendChild(temp);
+  var toReturn = temp.innerText;
+  document.body.removeChild(temp);
+  return toReturn;
+}
 
 document.addEventListener("input", siDispMod);
 document.addEventListener("keydown", siKeyLog);
@@ -80,39 +73,35 @@ function siKeyLog(key) {
 function siDispMod(el, unfocusTF, overrideEL) {
   loadSI();
   var input;
-  if (overrideEL) var input = overrideEL;
-  else var input = document.activeElement;
-  if (searchableInputsIdAr.indexOf(input.id) === -1) return false;
-  var optionListNum = siOptionListsForAr.indexOf(input.id);
-  siOptionListsAr[optionListNum].classList.add("si-modified");
-  if (optionListNum > -1) {
-    var siOptions = siOptionListsAr[optionListNum].querySelectorAll("*");
-    for (i = 0; i < siOptions.length; i++) {
-      if (
-        siOptions[i].innerText
-          .toLowerCase()
-          .replace(/([^a-z0-9])+/g)
-          .match(input.value.toLowerCase().replace(/([^a-z0-9])+/g))
-      ) {
-        siOptions[i].classList.add("si-visible");
-        siOptions[i].classList.remove("si-hidden", "si-even", "si-odd");
-      } else {
-        siOptions[i].classList.add("si-hidden");
-        siOptions[i].classList.remove("si-visible", "si-even", "si-odd");
-      }
+  var input = overrideEL ? overrideEL : document.activeElement;
+  if (input.id == "" || !(document.querySelector(".si-input#" + input.id)) || !(document.querySelector(".si-option-list[for-si-input='" + input.id + "']"))) return false;
+  var optionList = document.querySelector(".si-option-list[for-si-input='" + input.id + "']");
+  optionList.classList.add("si-modified");
+  var siOptions = optionList.querySelectorAll(".si-option");
+  for (i = 0; i < siOptions.length; i++) {
+    if (
+      siOptions[i].innerText
+      .toLowerCase()
+      .includes(input.value.toLowerCase())
+    ) {
+      siOptions[i].classList.add("si-visible");
+      siOptions[i].classList.remove("si-hidden", "si-even", "si-odd");
+    } else {
+      siOptions[i].classList.add("si-hidden");
+      siOptions[i].classList.remove("si-visible", "si-even", "si-odd");
     }
-    var siOptionsVisible = siOptionListsAr[optionListNum].querySelectorAll(
-      ".si-visible"
-    );
-    var isEven = true;
-    for (i = 0; i < siOptionsVisible.length; i++) {
-      if (isEven) {
-        siOptionsVisible[i].classList.add("si-even");
-        var isEven = false;
-      } else {
-        siOptionsVisible[i].classList.add("si-odd");
-        var isEven = true;
-      }
+  }
+  var siOptionsVisible = optionList.querySelectorAll(
+    ".si-visible"
+  );
+  var isEven = true;
+  for (i = 0; i < siOptionsVisible.length; i++) {
+    if (isEven) {
+      siOptionsVisible[i].classList.add("si-even");
+      var isEven = false;
+    } else {
+      siOptionsVisible[i].classList.add("si-odd");
+      var isEven = true;
     }
   }
   siUnhover();
@@ -162,54 +151,51 @@ function siUnhover() {
 function siSelectNew(dir) {
   loadSI();
   var input = document.activeElement;
-  if (searchableInputsIdAr.indexOf(input.id) === -1) return false;
-  var optionListNum = siOptionListsForAr.indexOf(input.id);
-  if (optionListNum > -1) {
-    var optionList = siOptionListsAr[optionListNum];
-    var siOptions = optionList.querySelectorAll("*");
-    var available = optionList.querySelectorAll(".si-option:not(.si-hidden)");
-    var availableAr = [...available];
-    var hovered = optionList.querySelector(".si-hovered");
-    var hoverIndex = availableAr.indexOf(hovered);
-    if (dir === 38) {
-      // ArrowUp
-      if (hoverIndex === 0) var hoverIndex = 1;
-      if (hoverIndex === -1) var hoverIndex = availableAr.length;
-      var hoverIndex = hoverIndex - 1;
-      siUnhover();
-      available[hoverIndex].classList.add("si-hovered");
-      available[hoverIndex].scrollIntoView({
-        block: "nearest",
-        inline: "nearest"
-      });
-    }
-    if (dir === 40) {
-      // ArrowDown
-      if (hoverIndex === availableAr.length - 1)
-        var hoverIndex = availableAr.length - 2;
-      var hoverIndex = hoverIndex + 1;
-      siUnhover();
-      available[hoverIndex].classList.add("si-hovered");
-      available[hoverIndex].scrollIntoView({
-        block: "nearest",
-        inline: "nearest"
-      });
-    }
-    if (dir === 13) {
-      // Enter
-      if (hovered) input.value = available[hoverIndex].innerText;
-      else input.value = available[0].innerText;
-      input.dispatchEvent(
-        new CustomEvent("sivalueconfirmed", {
-          detail: {
-            value: input.value,
-            method: "enter"
-          }
-        })
-      );
-      siDispMod();
-      siUnfocus(".si-option");
-    }
+  if (!(document.querySelector(".si-input#" + input.id)) || !(document.querySelector(".si-option-list[for-si-input='" + input.id + "']"))) return false;
+  var optionList = document.querySelector(".si-option-list[for-si-input='" + input.id + "']");
+  var siOptions = optionList.querySelectorAll(".si-option");
+  var available = optionList.querySelectorAll(".si-option:not(.si-hidden)");
+  var availableAr = [...available];
+  var hovered = optionList.querySelector(".si-hovered");
+  var hoverIndex = availableAr.indexOf(hovered);
+  if (dir === 38) {
+    // ArrowUp
+    if (hoverIndex === 0) var hoverIndex = 1;
+    if (hoverIndex === -1) var hoverIndex = availableAr.length;
+    var hoverIndex = hoverIndex - 1;
+    siUnhover();
+    available[hoverIndex].classList.add("si-hovered");
+    available[hoverIndex].scrollIntoView({
+      block: "nearest",
+      inline: "nearest"
+    });
+  }
+  if (dir === 40) {
+    // ArrowDown
+    if (hoverIndex === availableAr.length - 1)
+      var hoverIndex = availableAr.length - 2;
+    var hoverIndex = hoverIndex + 1;
+    siUnhover();
+    available[hoverIndex].classList.add("si-hovered");
+    available[hoverIndex].scrollIntoView({
+      block: "nearest",
+      inline: "nearest"
+    });
+  }
+  if (dir === 13) {
+    // Enter
+    if (hovered) input.value = siGetVisibleText(available[hoverIndex]);
+    else input.value = siGetVisibleText(available[0]);
+    input.dispatchEvent(
+      new CustomEvent("sivalueconfirmed", {
+        detail: {
+          value: input.value,
+          method: "enter"
+        }
+      })
+    );
+    siDispMod();
+    siUnfocus(".si-option");
   }
 }
 
