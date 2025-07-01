@@ -26,6 +26,10 @@
   --si-hover-color: blue;
 }
 
+.si-container, .si-container * {
+  box-sizing: border-box;
+}
+
 .si-container.si-centered {
   display: flex;
   justify-content: center;
@@ -147,8 +151,8 @@
   opacity: 0;
   height: 0;
   width: 0;
-  top: 0;
-  left: 0;
+  top: -999999999px;
+  left: -999999999px;
   position: absolute;
 	user-drag: none;
 	-webkit-user-drag: none;
