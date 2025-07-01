@@ -60,14 +60,24 @@ function siGetVisibleText(el) {
 document.addEventListener("input", siDispMod);
 document.addEventListener("keydown", siKeyLog);
 
+document.addEventListener("keyup", (e) => {
+  if (e.key === "Escape") {
+    const active = document.activeElement;
+    if (active && active.classList.contains("si-input")) {
+      siUnfocus(".si-option", active);
+    }
+  }
+});
+
 function siKeyLog(key) {
-  if (key.keyCode === 27) siUnfocus(".si-option"); // Escape
   if (
-    key.keyCode === 38 || // ArrowUp
-    key.keyCode === 40 || // ArrowDown
-    key.keyCode === 13 // Enter
-  )
-    siSelectNew(key.keyCode);
+    key.key === "ArrowUp" ||
+    key.key === "ArrowDown" ||
+    key.key === "Enter"
+  ) {
+    key.preventDefault();
+    siSelectNew(key.key);
+  }
 }
 
 function siDispMod(el, unfocusTF, overrideEL) {
@@ -155,14 +165,12 @@ function siSelectNew(dir) {
   var optionList = document.querySelector(".si-option-list[for-si-input='" + input.id + "']");
   var siOptions = optionList.querySelectorAll(".si-option");
   var available = optionList.querySelectorAll(".si-option:not(.si-hidden)");
+  if (available.length == 0) return;
   var availableAr = [...available];
   var hovered = optionList.querySelector(".si-hovered");
   var hoverIndex = availableAr.indexOf(hovered);
-  if (dir === 38) {
-    // ArrowUp
-    if (hoverIndex === 0) var hoverIndex = 1;
-    if (hoverIndex === -1) var hoverIndex = availableAr.length;
-    var hoverIndex = hoverIndex - 1;
+  if (dir === "ArrowUp") {
+    var hoverIndex = hoverIndex < 1 ? availableAr.length - 1 : hoverIndex - 1;
     siUnhover();
     available[hoverIndex].classList.add("si-hovered");
     available[hoverIndex].scrollIntoView({
@@ -170,11 +178,8 @@ function siSelectNew(dir) {
       inline: "nearest"
     });
   }
-  if (dir === 40) {
-    // ArrowDown
-    if (hoverIndex === availableAr.length - 1)
-      var hoverIndex = availableAr.length - 2;
-    var hoverIndex = hoverIndex + 1;
+  if (dir === "ArrowDown") {
+    var hoverIndex = hoverIndex == availableAr.length - 1 ? 0 : hoverIndex + 1;
     siUnhover();
     available[hoverIndex].classList.add("si-hovered");
     available[hoverIndex].scrollIntoView({
@@ -182,8 +187,7 @@ function siSelectNew(dir) {
       inline: "nearest"
     });
   }
-  if (dir === 13) {
-    // Enter
+  if (dir === "Enter") {
     if (hovered) input.value = siGetVisibleText(available[hoverIndex]);
     else input.value = siGetVisibleText(available[0]);
     input.dispatchEvent(
@@ -274,3 +278,5 @@ function newSIOption(forId, option) {
   loadSI();
   return tmp;
 }
+
+// :)
