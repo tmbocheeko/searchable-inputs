@@ -159,9 +159,10 @@ function siUnhover() {
 }
 
 function siSelectNew(dir) {
-  loadSI();
   var input = document.activeElement;
-  if (!(document.querySelector(".si-input#" + input.id)) || !(document.querySelector(".si-option-list[for-si-input='" + input.id + "']"))) return false;
+  console.log(input);
+  if (!input.closest(".si-container") || !(document.querySelector(".si-input#" + input.id)) || !(document.querySelector(".si-option-list[for-si-input='" + input.id + "']"))) return false;
+  loadSI();
   var optionList = document.querySelector(".si-option-list[for-si-input='" + input.id + "']");
   var siOptions = optionList.querySelectorAll(".si-option");
   var available = optionList.querySelectorAll(".si-option:not(.si-hidden)");
