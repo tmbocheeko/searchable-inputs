@@ -160,7 +160,6 @@ function siUnhover() {
 
 function siSelectNew(dir) {
   var input = document.activeElement;
-  console.log(input);
   if (!input.closest(".si-container") || !(document.querySelector(".si-input#" + input.id)) || !(document.querySelector(".si-option-list[for-si-input='" + input.id + "']"))) return false;
   loadSI();
   var optionList = document.querySelector(".si-option-list[for-si-input='" + input.id + "']");
