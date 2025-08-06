@@ -20,18 +20,20 @@ function loadSI() {
       siOptions[i].setAttribute("si-listener", "true");
       siOptions[i].addEventListener("click", function () {
         var siInput = document.getElementById(
+          this.parentElement.dataset.siInput ||
           this.parentElement.getAttribute("for-si-input")
         );
-        var visText = siGetVisibleText(this);
-        siInput.value = visText;
-        siInput.dispatchEvent(
+        var value = this.dataset.siValue || siGetVisibleText(this);
+        var isrun = siInput.dispatchEvent(
           new CustomEvent("sivalueconfirmed", {
             detail: {
-              value: visText,
-              method: "click"
+              value,
+              method: "click",
+              option: this,
             }
           })
         );
+        if (isrun) siInput.value = value;
         siDispMod(undefined, true, siInput);
       });
       siOptions[i].addEventListener("mouseover", function () {
@@ -188,16 +190,19 @@ function siSelectNew(dir) {
     });
   }
   if (dir === "Enter") {
-    if (hovered) input.value = siGetVisibleText(available[hoverIndex]);
-    else input.value = siGetVisibleText(available[0]);
-    input.dispatchEvent(
+    var option = hovered ? available[hoverIndex] : available[0];
+    var value = option.dataset.siValue || siGetVisibleText(option);
+    var isrun = input.dispatchEvent(
       new CustomEvent("sivalueconfirmed", {
         detail: {
-          value: input.value,
-          method: "enter"
-        }
+          value,
+          method: "enter",
+          option,
+        },
+        cancellable: true,
       })
     );
+    if (!isrun) input.value = value;
     siDispMod();
     siUnfocus(".si-option");
   }
