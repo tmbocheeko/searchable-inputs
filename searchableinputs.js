@@ -27,6 +27,7 @@ function loadSI() {
         var isrun = siInput.dispatchEvent(
           new CustomEvent("sivalueconfirmed", {
             detail: {
+              lastvalue: siInput.value,
               value,
               method: "click",
               option: this,
@@ -197,6 +198,7 @@ function siSelectNew(dir) {
     var isrun = input.dispatchEvent(
       new CustomEvent("sivalueconfirmed", {
         detail: {
+          lastvalue: input.value,
           value,
           method: "enter",
           option,
