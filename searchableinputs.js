@@ -202,7 +202,7 @@ function siSelectNew(dir) {
         cancellable: true,
       })
     );
-    if (!isrun) input.value = value;
+    if (isrun) input.value = value;
     siDispMod();
     siUnfocus(".si-option");
   }
