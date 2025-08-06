@@ -194,7 +194,6 @@ function siSelectNew(dir) {
   if (dir === "Enter") {
     var option = hovered ? available[hoverIndex] : available[0];
     var value = option.dataset.siValue || siGetVisibleText(option);
-    debugger;
     var isrun = input.dispatchEvent(
       new CustomEvent("sivalueconfirmed", {
         detail: {
