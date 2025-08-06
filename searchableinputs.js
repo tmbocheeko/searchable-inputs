@@ -30,7 +30,8 @@ function loadSI() {
               value,
               method: "click",
               option: this,
-            }
+            },
+            cancelable: true,
           })
         );
         if (isrun) siInput.value = value;
@@ -192,6 +193,7 @@ function siSelectNew(dir) {
   if (dir === "Enter") {
     var option = hovered ? available[hoverIndex] : available[0];
     var value = option.dataset.siValue || siGetVisibleText(option);
+    debugger;
     var isrun = input.dispatchEvent(
       new CustomEvent("sivalueconfirmed", {
         detail: {
@@ -199,7 +201,7 @@ function siSelectNew(dir) {
           method: "enter",
           option,
         },
-        cancellable: true,
+        cancelable: true,
       })
     );
     if (isrun) input.value = value;
